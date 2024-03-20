@@ -32,7 +32,7 @@
             class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Провери</button>
         </div>
       </div>
-      <Transition  name="slide-fade">
+      <Transition name="slide-fade">
 
         <div v-if="showSuccess" class="aspect-w-16 aspect-h-9 max-w-xl mx-auto ">
           <p class="text-black text-2xl mb-3">
@@ -47,10 +47,6 @@
 </template>
 <script setup>
 import { ref } from 'vue'
-import { ChevronDownIcon } from '@heroicons/vue/20/solid'
-import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
-
-const errorMessage = ''
 
 const showError = ref(false)
 const showSuccess = ref(false)
