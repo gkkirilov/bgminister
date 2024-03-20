@@ -9,7 +9,7 @@
       </div>
       <div class="mx-auto max-w-2xl text-center">
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Предложени ли сте за министър?</h2>
-        <p class="mt-2 text-lg leading-8 text-gray-600 max-w-lg mx-auto">Звъняли ли са ви непознати номера? <br> Чували
+        <p class="mt-2 text-lg leading-8 text-gray-600 max-w-lg mx-auto">Звъняли са ви непознати номера? <br> Чували
           сте се с Мария Габриел?<br>
           Не е и нужно, все пак може да сте предложени за министър.
         </p>
@@ -17,14 +17,14 @@
       <div action="#" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20 mb-5">
         <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div class="sm:col-span-2">
-            <label for="ЕГН" class="block text-sm font-semibold leading-6 text-gray-900">ЕГН</label>
+            <label for="триИмена" class="block text-sm font-semibold leading-6 text-gray-900">Пълни три имена</label>
             <div class="mt-2.5">
-              <input type="text" v-model="egn" name="ЕГН" id="ЕГН" autocomplete="organization"
+              <input type="text" v-model="fullName" name="триИмена" id="триИмена" autocomplete="name"
                 class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
             </div>
           </div>
           <p v-if="showError" class="text-red-500 col-span-2">
-            Моля въведете валидно ЕГН от точно 10 цифри.
+            Моля въведете българско име.
           </p>
         </div>
         <div class="mt-10">
@@ -33,7 +33,7 @@
         </div>
 
         <a href="https://twitter.com/Georgi_________" class="text-gray-400 flex justify-center items-center gap-x-2 mt-3 fixed left-0 right-0 bottom-10">
-          Създаден от Georgi
+          Georgi
           <img src="/x.svg" class="h-4">
         </a>
       </div>
@@ -56,11 +56,11 @@ import { ref } from 'vue'
 
 const showError = ref(false)
 const showSuccess = ref(false)
-const egn = ref('')
+const fullName = ref('')
 
 function submit() {
   showSuccess.value = false
-  if (egn.value.length !== 10) {
+  if (fullName.value.length <= 10) {
     showError.value = true
     return
   }
