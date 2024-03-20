@@ -33,7 +33,7 @@
         </div>
 
         <a href="https://twitter.com/Georgi_________" class="text-gray-400 flex justify-center items-center gap-x-2 mt-3 fixed left-0 right-0 bottom-10">
-          Created by Georgi
+          Създаден от Georgi
           <img src="/x.svg" class="h-4">
         </a>
       </div>
