@@ -17,22 +17,27 @@
       <div action="#" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20 mb-5">
         <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div class="sm:col-span-2">
-            <label for="триИмена" class="block text-sm font-semibold leading-6 text-gray-900">Пълни три имена</label>
+            <label for="триИмена" class="block text-sm font-semibold leading-6 text-gray-900">Пълно име</label>
             <div class="mt-2.5">
-              <input type="text" v-model="fullName" name="триИмена" id="триИмена" autocomplete="name"
+              <input type="text" v-model="fullName" placeholder="Андрей Цеков" name="триИмена" id="триИмена"
+                autocomplete="name"
                 class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
             </div>
           </div>
-          <p v-if="showError" class="text-red-500 col-span-2">
-            Моля въведете поне две име на кирилица.
-          </p>
+          <Transition name="slide-fade">
+
+            <p v-if="showError" class="text-red-500 col-span-2">
+              Моля въведете поне две име на кирилица.
+            </p>
+          </Transition>
         </div>
         <div class="mt-10">
           <button @click="submit"
             class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Провери</button>
         </div>
 
-        <a href="https://twitter.com/Georgi_________" class="text-gray-400 flex justify-center items-center gap-x-2 mt-3 fixed left-0 right-0 bottom-10">
+        <a href="https://twitter.com/Georgi_________"
+          class="text-gray-400 flex justify-center items-center gap-x-2 mt-3 fixed left-0 right-0 bottom-10">
           Georgi
           <img src="/x.svg" class="h-4">
         </a>
@@ -42,6 +47,14 @@
         <div v-if="showSuccess" class="aspect-w-16 aspect-h-9 max-w-xl mx-auto ">
           <p class="text-black text-2xl mb-3">
             Не са открити номинации за министър в базата данни.
+          </p>
+          <img src="/mara.jpg" class="object-cover w-full h-full rounded-xl">
+        </div>
+      </Transition>
+      <Transition name="slide-fade">
+        <div v-if="showSuccessminister" class="aspect-w-16 aspect-h-9 max-w-xl mx-auto ">
+          <p class="text-black text-2xl mb-3">
+            ⚠️ Министър си, крий се бързо. ⚠️
           </p>
           <img src="/mara.jpg" class="object-cover w-full h-full rounded-xl">
         </div>
@@ -56,7 +69,31 @@ import { ref } from 'vue'
 
 const showError = ref(false)
 const showSuccess = ref(false)
+const showSuccessminister = ref(false)
 const fullName = ref('')
+
+const ministers = [
+  'Мария Габриел',
+  'Николай Денков',
+  'Асен Василев',
+  'Калин Стоянов',
+  'Андрей Цеков',
+  'Иванка Шалапатова',
+  'Христо Гаджев',
+  'Атанас Славов',
+  'Галин Цоков',
+  'Катя Панева',
+  'Кръстьо Кръстев',
+  'Ивелина Василева',
+  'Кирил Вътев',
+  'Георги Гвоздейков',
+  'Росен Желязков',
+  'Богдан Богданов',
+  'Жечо Станков',
+  'Валентин Мундров',
+  'Зарица Динкова',
+  'Димитър Илиев',
+]
 function containsCyrillic(text) {
   // Regular expression to match Cyrillic characters
   const cyrillicPattern = /\p{Script=Cyrillic}/u;
@@ -65,13 +102,29 @@ function containsCyrillic(text) {
 }
 function submit() {
   showSuccess.value = false
-  console.log(containsCyrillic(fullName.value))
-  if (fullName.value.length <= 10 || !containsCyrillic(fullName.value) ) {
+
+  if (fullName.value.length <= 10 || !containsCyrillic(fullName.value)) {
     showError.value = true
     return
   }
+
+  for (const name of ministers) {
+    if (name.indexOf(fullName.value) !== -1) {
+      showSuccessminister.value = true
+
+      setTimeout(() => {
+        showSuccessminister.value = false
+      }, 10000);
+      return
+    }
+  }
+
   showError.value = false
   showSuccess.value = true
+
+  setTimeout(() => {
+    showSuccess.value = false
+  }, 10000);
 }
 
 </script>
