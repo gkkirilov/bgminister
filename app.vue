@@ -62,12 +62,12 @@
           <p class="text-black text-2xl mb-3">
             Не са открити номинации за министър в базата данни.
           </p>
-          <img src="/mara.jpg" class="object-cover w-full h-full rounded-xl">
+          <!-- <img src="/mara.jpg" class="object-cover w-full h-full rounded-xl"> -->
         </div>
       </Transition>
       <Transition name="slide-fade">
         <div v-if="showSuccessminister" class="aspect-w-16 aspect-h-9 max-w-xl mx-auto ">
-          <p class="text-black text-2xl mb-3">
+          <p class="text-black text-2xl mb-3 text-red-600 text-center">
             ⚠️ Министър си, крий се бързо. ⚠️
           </p>
           <img src="/mara.jpg" class="object-cover w-full h-full rounded-xl">
