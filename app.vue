@@ -35,10 +35,10 @@
       <Transition  name="slide-fade">
 
         <div v-if="showSuccess" class="aspect-w-16 aspect-h-9 max-w-xl mx-auto ">
-          <p class="text-green-600 text-2xl mb-3">
-            Честито, не сте номинирани за министър! За сега.
+          <p class="text-black text-2xl mb-3">
+            Не са открити номинации за министър в базата данни
           </p>
-          <img src="/mara.jpg" class="object-cover w-full h-full rounded-xl">
+          <!-- <img src="/mara.jpg" class="object-cover w-full h-full rounded-xl"> -->
         </div>
       </Transition>
     </div>
