@@ -24,7 +24,7 @@
             </div>
           </div>
           <p v-if="showError" class="text-red-500 col-span-2">
-            Моля въведете българско име.
+            Моля въведете поне две име на кирилица.
           </p>
         </div>
         <div class="mt-10">
@@ -57,10 +57,16 @@ import { ref } from 'vue'
 const showError = ref(false)
 const showSuccess = ref(false)
 const fullName = ref('')
-
+function containsCyrillic(text) {
+  // Regular expression to match Cyrillic characters
+  const cyrillicPattern = /\p{Script=Cyrillic}/u;
+  // Test if the text contains any Cyrillic characters
+  return cyrillicPattern.test(text);
+}
 function submit() {
   showSuccess.value = false
-  if (fullName.value.length <= 10) {
+  console.log(containsCyrillic(fullName.value))
+  if (fullName.value.length <= 10 || !containsCyrillic(fullName.value) ) {
     showError.value = true
     return
   }
