@@ -11,7 +11,7 @@
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Предложени ли сте за министър?</h2>
         <p class="mt-2 text-lg leading-8 text-gray-600 max-w-lg mx-auto">Звъняли ли са ви непознати номера? <br> Чували
           сте се с Мария Габриел?<br>
-          Не е и нужно, все пак може да сте предложени за министър
+          Не е и нужно, все пак може да сте предложени за министър.
         </p>
       </div>
       <div action="#" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20 mb-5">
